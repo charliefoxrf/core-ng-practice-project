@@ -1,0 +1,4 @@
+include 'painter-service'
+
+includeBuild '../core-ng-project'
+
