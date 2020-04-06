@@ -4,7 +4,7 @@ import app.PainterDemoApp;
 import core.framework.test.module.AbstractTestModule;
 
 /**
- * @author charlie fox
+ * @author charlie
  */
 public class TestModule extends AbstractTestModule {
     @Override
