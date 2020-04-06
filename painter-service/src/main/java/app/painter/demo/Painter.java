@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Painter {
 
-    private Logger logger = LoggerFactory.getLogger(Painter.class);
+    private final Logger logger = LoggerFactory.getLogger(Painter.class);
 
     @Inject
     Brush brush;
