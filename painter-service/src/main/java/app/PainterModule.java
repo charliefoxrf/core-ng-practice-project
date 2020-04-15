@@ -1,7 +1,7 @@
 package app;
 
-import app.painter.demo.Painter;
-import app.painter.demo.Brush;
+import app.painter.Brush;
+import app.painter.Painter;
 import core.framework.module.Module;
 
 /**
@@ -13,6 +13,7 @@ public class PainterModule extends Module {
     protected void initialize() {
         bind(Brush.class);
         bind(Painter.class);
-        bean(Painter.class).draw();
+        Painter painter = bean(Painter.class);
+        onStartup(painter::draw);
     }
 }

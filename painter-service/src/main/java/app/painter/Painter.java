@@ -1,4 +1,4 @@
-package app.painter.demo;
+package app.painter;
 
 import core.framework.inject.Inject;
 import org.slf4j.Logger;

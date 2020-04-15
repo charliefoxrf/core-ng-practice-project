@@ -1,4 +1,4 @@
-package app.painter.demo;
+package app.painter;
 
 
 /**
