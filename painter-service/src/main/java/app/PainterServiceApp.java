@@ -14,5 +14,6 @@ public class PainterServiceApp extends App {
 
         load(new SystemModule("sys.properties"));
         load(new PainterModule());
+        load(new ArtModule());
     }
 }

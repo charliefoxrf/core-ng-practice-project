@@ -1,4 +1,4 @@
-package app.painter.api.painter;
+package app.painter.api.art;
 
 import core.framework.api.json.Property;
 import core.framework.api.validate.NotBlank;
@@ -7,18 +7,14 @@ import core.framework.api.validate.NotNull;
 /**
  * @author charlie
  */
-public class PainterView {
+public class ArtView {
 
     @NotNull
     @Property(name = "id")
-    public Long id;
+    public String id;
 
     @NotNull
     @NotBlank
-    @Property(name = "first_name")
-    public String firstName;
-
-    @NotBlank
-    @Property(name = "last_name")
-    public String lastName;
+    @Property(name = "name")
+    public String name;
 }
