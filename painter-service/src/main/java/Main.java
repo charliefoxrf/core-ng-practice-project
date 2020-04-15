@@ -1,10 +1,10 @@
-import app.PainterDemoApp;
+import app.PainterServiceApp;
 
 /**
  * @author charlie
  */
 public class Main {
     public static void main(String[] args) {
-        new PainterDemoApp().start();
+        new PainterServiceApp().start();
     }
 }

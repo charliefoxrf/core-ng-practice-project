@@ -1,7 +1,9 @@
 package app;
 
-import app.painter.Brush;
-import app.painter.Painter;
+import app.painter.api.PainterWebService;
+import app.painter.domain.Painter;
+import app.painter.service.PainterService;
+import app.painter.web.PainterWebServiceImpl;
 import core.framework.module.Module;
 
 /**
@@ -11,9 +13,8 @@ public class PainterModule extends Module {
 
     @Override
     protected void initialize() {
-        bind(Brush.class);
-        bind(Painter.class);
-        Painter painter = bean(Painter.class);
-        onStartup(painter::draw);
+        db().repository(Painter.class);
+        bind(PainterService.class);
+        api().service(PainterWebService.class, bind(PainterWebServiceImpl.class));
     }
 }

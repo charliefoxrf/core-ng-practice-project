@@ -1,6 +1,6 @@
 package app.painter;
 
-import app.PainterDemoApp;
+import app.PainterServiceApp;
 import core.framework.test.module.AbstractTestModule;
 
 /**
@@ -9,6 +9,6 @@ import core.framework.test.module.AbstractTestModule;
 public class TestModule extends AbstractTestModule {
     @Override
     protected void initialize() {
-        load(new PainterDemoApp());
+        load(new PainterServiceApp());
     }
 }
