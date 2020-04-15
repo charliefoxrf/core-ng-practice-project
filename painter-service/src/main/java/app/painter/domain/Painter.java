@@ -21,6 +21,7 @@ public class Painter {
     @Column(name = "first_name")
     public String firstName;
 
+    @NotNull
     @NotBlank
     @Column(name = "last_name")
     public String lastName;
