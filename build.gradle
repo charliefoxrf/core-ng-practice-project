@@ -32,8 +32,40 @@ configure(project(':painter-service')) {
     }
 }
 
+//when you build a simple project, you can put your module dependencies in one place only
 project(':painter-service') {
     dependencies {
         implementation project(':painter-service-interface')
     }
 }
+
+//when you build a complex project, you can configure your module like this:
+//configure common outer dependencies
+//module use db
+//configure([...projects]){
+//apply from: file("${rootDir}/gradle/app.gradle")
+//dependencies {
+//    runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
+//}
+//}
+//module use mongo
+//configure([...projects]){
+//apply from: file("${rootDir}/gradle/app.gradle")
+//dependencies {
+//    implementation "core.framework:core-ng-mongo:${coreNGVersion}"
+//}
+//}
+//and define specific dependencies for your module
+//project(':a') {
+//    dependencies {
+//        implementation project(':painter-service-interface')
+//    }
+//}
+//project(':b') {
+//    dependencies {
+//        implementation project(':painter-service-interface')
+//        implementation project(':xxx')
+//        implementation project(':yyy')
+//        implementation project(':zzz')
+//    }
+//}

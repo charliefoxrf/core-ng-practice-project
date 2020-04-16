@@ -12,6 +12,9 @@ import java.util.UUID;
 /**
  * @author charlie
  */
+//todo you can make some cases for query
+// Query query = new Query();
+// and we usually use ReadPreference.secondary() to query
 public class ArtService {
     @Inject
     MongoCollection<Art> artCollection;
