@@ -2,6 +2,8 @@ package app.painter.api;
 
 import app.painter.api.art.ArtView;
 import app.painter.api.art.CreateArtRequest;
+import app.painter.api.art.SearchArtRequest;
+import app.painter.api.art.SearchArtResponse;
 import core.framework.api.http.HTTPStatus;
 import core.framework.api.web.service.GET;
 import core.framework.api.web.service.POST;
@@ -21,5 +23,9 @@ public interface ArtWebService {
     @Path("/art")
     @ResponseStatus(HTTPStatus.CREATED)
     ArtView create(CreateArtRequest request);
+
+    @GET
+    @Path("/art")
+    SearchArtResponse search(SearchArtRequest request);
 
 }
