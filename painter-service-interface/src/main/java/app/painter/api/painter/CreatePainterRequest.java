@@ -8,7 +8,6 @@ import core.framework.api.validate.NotNull;
  * @author charlie
  */
 public class CreatePainterRequest {
-
     @NotNull
     @NotBlank
     @Property(name = "first_name")

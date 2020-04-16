@@ -11,7 +11,6 @@ import core.framework.db.Table;
  */
 @Table(name = "painters")
 public class Painter {
-
     @PrimaryKey(autoIncrement = true)
     @Column(name = "id")
     public Long id;

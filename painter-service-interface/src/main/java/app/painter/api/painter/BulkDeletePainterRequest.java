@@ -5,7 +5,6 @@ import core.framework.api.validate.NotBlank;
 import core.framework.api.validate.NotNull;
 
 public class BulkDeletePainterRequest {
-
     @NotBlank
     @NotNull
     @Property(name = "first_name")

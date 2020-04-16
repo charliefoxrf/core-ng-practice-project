@@ -8,7 +8,6 @@ import java.util.List;
  * @author charlie
  */
 public class SearchPainterResponse {
-
     @Property(name = "total")
     public Long total;
 

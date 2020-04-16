@@ -13,7 +13,6 @@ import core.framework.api.web.service.ResponseStatus;
  * @author charlie
  */
 public interface ArtWebService {
-
     @GET
     @Path("/art/:id")
     ArtView get(@PathParam("id") String id);

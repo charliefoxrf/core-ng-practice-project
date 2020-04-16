@@ -5,6 +5,7 @@ import app.painter.api.art.ArtView;
 import app.painter.api.art.CreateArtRequest;
 import core.framework.inject.Inject;
 import core.framework.mongo.MongoCollection;
+import core.framework.util.Strings;
 import core.framework.web.exception.NotFoundException;
 
 import java.util.UUID;
@@ -17,7 +18,7 @@ public class ArtService {
     MongoCollection<Art> artCollection;
 
     public ArtView get(String id) {
-        Art art = artCollection.get(id).orElseThrow(() -> new NotFoundException("art not found, id=" + id));
+        Art art = artCollection.get(id).orElseThrow(() -> new NotFoundException(Strings.format("art not found, id={}", id)));
         return view(art);
     }
 

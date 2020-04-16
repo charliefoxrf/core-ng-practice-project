@@ -17,7 +17,6 @@ import core.framework.api.web.service.ResponseStatus;
  * @author charlie
  */
 public interface PainterWebService {
-
     @GET
     @Path("/painter/:id")
     PainterView get(@PathParam("id") Long id);

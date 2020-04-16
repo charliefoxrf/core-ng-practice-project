@@ -10,7 +10,6 @@ import core.framework.module.Module;
  * @author charlie
  */
 public class PainterModule extends Module {
-
     @Override
     protected void initialize() {
         db().repository(Painter.class);

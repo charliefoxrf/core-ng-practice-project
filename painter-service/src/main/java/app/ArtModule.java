@@ -11,7 +11,6 @@ import core.framework.mongo.module.MongoConfig;
  * @author charlie
  */
 public class ArtModule extends Module {
-
     @Override
     protected void initialize() {
         MongoConfig config = config(MongoConfig.class);

@@ -8,7 +8,6 @@ import core.framework.api.validate.NotNull;
  * @author charlie
  */
 public class PainterView {
-
     @NotNull
     @Property(name = "id")
     public Long id;

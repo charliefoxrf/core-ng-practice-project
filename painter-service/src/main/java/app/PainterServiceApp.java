@@ -7,7 +7,6 @@ import core.framework.module.SystemModule;
  * @author charlie
  */
 public class PainterServiceApp extends App {
-
     @Override
     protected void initialize() {
         http().httpPort(8081);

@@ -8,7 +8,6 @@ import core.framework.api.web.service.QueryParam;
  * @author charlie
  */
 public class SearchPainterRequest {
-
     @NotNull
     @QueryParam(name = "skip")
     public Integer skip = 0;

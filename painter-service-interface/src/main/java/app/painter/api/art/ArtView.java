@@ -8,7 +8,6 @@ import core.framework.api.validate.NotNull;
  * @author charlie
  */
 public class ArtView {
-
     @NotNull
     @Property(name = "id")
     public String id;

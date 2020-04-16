@@ -9,9 +9,8 @@ import core.framework.mongo.Id;
 /**
  * @author charlie
  */
-@Collection(name = "art")
+@Collection(name = "arts")
 public class Art {
-
     @Id
     public String id;
 
@@ -19,5 +18,4 @@ public class Art {
     @NotBlank
     @Field(name = "name")
     public String name;
-
 }
