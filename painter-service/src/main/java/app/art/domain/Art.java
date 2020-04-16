@@ -9,6 +9,7 @@ import core.framework.mongo.Id;
 /**
  * @author charlie
  */
+//todo arts
 @Collection(name = "art")
 public class Art {
 

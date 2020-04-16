@@ -55,6 +55,7 @@ public class PainterService {
         query.limit(request.limit);
         query.where("first_name = ?", request.firstName);
         result.painters = query.fetch().stream().map(this::view).collect(Collectors.toList());
+        //todo use query.count()
         result.total = Long.valueOf(result.painters.size());
         return result;
     }
@@ -72,6 +73,7 @@ public class PainterService {
 
 
     private Painter getPainterOrThrow(Long id) {
+        //todo it's better to use Strings.format("customer not found, id={}",id) instead of "customer not found, id=" + id
         return painterRepository.get(id).orElseThrow(() -> new NotFoundException("customer not found, id=" + id));
     }
 
