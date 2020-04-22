@@ -11,6 +11,7 @@ public class PainterServiceApp extends App {
     protected void initialize() {
         http().httpPort(8081);
 
+        executor().add();
         load(new SystemModule("sys.properties"));
         load(new PainterModule());
         load(new ArtModule());

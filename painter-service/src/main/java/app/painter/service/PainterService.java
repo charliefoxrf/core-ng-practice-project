@@ -6,6 +6,7 @@ import app.painter.api.painter.PainterView;
 import app.painter.api.painter.SearchPainterRequest;
 import app.painter.api.painter.SearchPainterResponse;
 import app.painter.domain.Painter;
+import core.framework.async.Executor;
 import core.framework.db.Database;
 import core.framework.db.Query;
 import core.framework.db.Repository;
@@ -13,7 +14,10 @@ import core.framework.db.Transaction;
 import core.framework.inject.Inject;
 import core.framework.util.Strings;
 import core.framework.web.exception.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,10 +25,13 @@ import java.util.stream.Collectors;
  * @author charlie
  */
 public class PainterService {
+    private final Logger logger = LoggerFactory.getLogger(PainterService.class);
     @Inject
     Repository<Painter> painterRepository;
     @Inject
     Database database;
+    @Inject
+    Executor executor;
 
     public PainterView get(Long id) {
         Painter painter = getPainterOrThrow(id);
@@ -36,6 +43,12 @@ public class PainterService {
         painter.firstName = request.firstName;
         painter.lastName = request.lastName;
         painter.id = painterRepository.insert(painter).orElseThrow();
+        executor.submit("normal-task", () -> {
+            logger.info("Painter created!");
+        });
+        executor.submit("delayed-task", () -> {
+            logger.info("Painter created about 10s ago!");
+        }, Duration.ofSeconds(10));
         return view(painter);
     }
 
