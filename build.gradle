@@ -17,6 +17,17 @@ subprojects {
 def coreNGVersion = '7.4.0'
 def mysqlVersion = '8.0.19'
 
+configure([project(':painter-service'),
+           project(':customer-service')]) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+        implementation project(':painter-service-interface')
+        testImplementation "core.framework:core-ng-test:${coreNGVersion}"
+    }
+
+}
+
 project(':painter-service-interface') {
     dependencies {
         implementation "core.framework:core-ng-api:${coreNGVersion}"
@@ -26,10 +37,7 @@ project(':painter-service-interface') {
 project(':painter-service') {
     apply from: file("${rootDir}/gradle/app.gradle")
     dependencies {
-        implementation "core.framework:core-ng:${coreNGVersion}"
         implementation "core.framework:core-ng-mongo:${coreNGVersion}"
-        implementation project(':painter-service-interface')
-        testImplementation "core.framework:core-ng-test:${coreNGVersion}"
         runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
     }
 }

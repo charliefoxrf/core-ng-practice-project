@@ -5,8 +5,10 @@ import app.painter.api.art.ArtView;
 import app.painter.api.art.CreateArtRequest;
 import app.painter.api.art.SearchArtRequest;
 import app.painter.api.art.SearchArtResponse;
+import app.painter.api.art.kafka.ArtCreatedMessage;
 import com.mongodb.ReadPreference;
 import core.framework.inject.Inject;
+import core.framework.kafka.MessagePublisher;
 import core.framework.mongo.MongoCollection;
 import core.framework.mongo.Query;
 import core.framework.util.Strings;
@@ -23,6 +25,8 @@ import static com.mongodb.client.model.Filters.text;
 public class ArtService {
     @Inject
     MongoCollection<Art> artCollection;
+    @Inject
+    MessagePublisher<ArtCreatedMessage> artCreatedMessagePublisher;
 
     public ArtView get(String id) {
         Art art = artCollection.get(id).orElseThrow(() -> new NotFoundException(Strings.format("art not found, id={}", id)));
@@ -34,6 +38,10 @@ public class ArtService {
         art.id = UUID.randomUUID().toString();
         art.name = request.name;
         artCollection.insert(art);
+
+        ArtCreatedMessage createdMessage = new ArtCreatedMessage();
+        createdMessage.name = art.name;
+        artCreatedMessagePublisher.publish(createdMessage);
         return view(art);
     }
 

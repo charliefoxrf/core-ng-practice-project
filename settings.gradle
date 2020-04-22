@@ -1,3 +1,3 @@
+include 'customer-service'
 include 'painter-service'
 include 'painter-service-interface'
-

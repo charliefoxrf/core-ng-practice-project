@@ -4,9 +4,11 @@ import app.art.domain.Art;
 import app.art.job.ArtDailyJob;
 import app.art.job.ArtFixedJob;
 import app.art.job.ArtTriggerJob;
+import app.art.kafka.ArtCreatedMessageHandler;
 import app.art.service.ArtService;
 import app.art.web.ArtWebServiceImpl;
 import app.painter.api.ArtWebService;
+import app.painter.api.art.kafka.ArtCreatedMessage;
 import core.framework.module.Module;
 import core.framework.mongo.module.MongoConfig;
 
@@ -20,6 +22,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ArtModule extends Module {
     @Override
     protected void initialize() {
+        kafka().groupId("painter-service");
+        kafka().publish("art-created", ArtCreatedMessage.class);
+        kafka().subscribe("art-created", ArtCreatedMessage.class, bind(ArtCreatedMessageHandler.class));
+
         MongoConfig config = config(MongoConfig.class);
         config.uri(requiredProperty("sys.mongo.uri"));
         config.collection(Art.class);
