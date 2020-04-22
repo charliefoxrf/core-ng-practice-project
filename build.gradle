@@ -14,7 +14,7 @@ subprojects {
     }
 }
 
-def coreNGVersion = '7.3.0'
+def coreNGVersion = '7.4.0'
 def mysqlVersion = '8.0.19'
 
 project(':painter-service-interface') {

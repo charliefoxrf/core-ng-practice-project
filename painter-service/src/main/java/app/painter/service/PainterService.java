@@ -54,7 +54,7 @@ public class PainterService {
         query.limit(request.limit);
         query.where("first_name = ?", request.firstName);
         result.painters = query.fetch().stream().map(this::view).collect(Collectors.toList());
-        result.total = (long) query.count();
+        result.total = query.count();
         return result;
     }
 
