@@ -35,6 +35,6 @@ public interface PainterWebService {
     SearchPainterResponse search(SearchPainterRequest request);
 
     @POST
-    @Path("/painter/actions/bulkDelete")
+    @Path("/painter/bulk")
     void bulkDelete(BulkDeletePainterRequest request);
 }
