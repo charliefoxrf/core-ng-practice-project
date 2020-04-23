@@ -6,6 +6,7 @@ import app.painter.api.painter.PainterView;
 import app.painter.api.painter.SearchPainterRequest;
 import app.painter.api.painter.SearchPainterResponse;
 import core.framework.api.http.HTTPStatus;
+import core.framework.api.web.service.DELETE;
 import core.framework.api.web.service.GET;
 import core.framework.api.web.service.POST;
 import core.framework.api.web.service.PUT;
@@ -34,7 +35,7 @@ public interface PainterWebService {
     @Path("/painter")
     SearchPainterResponse search(SearchPainterRequest request);
 
-    @POST
+    @DELETE
     @Path("/painter/bulk")
     void bulkDelete(BulkDeletePainterRequest request);
 }
