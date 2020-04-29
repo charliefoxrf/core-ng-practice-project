@@ -11,10 +11,10 @@ import app.painter.api.ArtWebService;
 import app.painter.api.art.kafka.ArtCreatedMessage;
 import core.framework.module.Module;
 import core.framework.mongo.module.MongoConfig;
+import core.framework.util.Randoms;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author charlie
@@ -35,7 +35,7 @@ public class ArtModule extends Module {
         schedule().fixedRate("art-fixed", bind(ArtFixedJob.class), Duration.ofMinutes(1));
         schedule().dailyAt("art-daily", bind(ArtDailyJob.class), LocalTime.NOON);
         schedule().trigger("art-trigger", bind(ArtTriggerJob.class), previous -> {
-            return previous.plusSeconds(10 + ThreadLocalRandom.current().nextInt(-3, 4));
+            return previous.plusSeconds(10 + Randoms.nextInt(-3, 4));
         });
     }
 }

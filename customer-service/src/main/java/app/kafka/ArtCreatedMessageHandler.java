@@ -13,7 +13,7 @@ public class ArtCreatedMessageHandler implements MessageHandler<ArtCreatedMessag
     private final Logger logger = LoggerFactory.getLogger(ArtCreatedMessageHandler.class);
 
     @Override
-    public void handle(String key, ArtCreatedMessage value) throws Exception {
+    public void handle(String key, ArtCreatedMessage value) {
         logger.info(Strings.format("Art created message with name={} received by customer-service!", value.name));
     }
 }

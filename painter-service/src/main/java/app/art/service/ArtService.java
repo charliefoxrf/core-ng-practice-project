@@ -53,7 +53,7 @@ public class ArtService {
         query.filter = text(request.term); // requires text index
         query.readPreference = ReadPreference.secondaryPreferred();
         result.art = artCollection.find(query).stream().map(this::view).collect(Collectors.toList());
-        result.total = (long) result.art.size(); // no query.count() for mongo?
+        result.total = artCollection.count(query.filter);
         return result;
     }
 
