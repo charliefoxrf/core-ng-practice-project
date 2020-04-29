@@ -34,6 +34,13 @@ project(':painter-service-interface') {
     }
 }
 
+project(':painter-service-db-migration') {
+    apply from: file("${rootDir}/gradle/db-migration.gradle")
+    dependencies {
+        runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
+    }
+}
+
 project(':painter-service') {
     apply from: file("${rootDir}/gradle/app.gradle")
     dependencies {

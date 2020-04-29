@@ -1,3 +1,4 @@
 include 'customer-service'
 include 'painter-service'
 include 'painter-service-interface'
+include 'painter-service-db-migration'
